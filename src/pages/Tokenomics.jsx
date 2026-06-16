@@ -27,60 +27,64 @@ export default function Tokenomics() {
 
           {/* ===== CONNECTOR LINES (drawn behind everything else) ===== */}
           <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
+  className="absolute inset-0 w-full h-full pointer-events-none z-20"
             viewBox="0 0 1000 480"
             preserveAspectRatio="none"
           >
-            {/* Presale -> donut (left side) */}
-            <line x1="260" y1="95" x2="400" y2="170" stroke="#06b6d4" strokeWidth="2" />
-            <circle cx="400" cy="170" r="6" fill="#06b6d4" />
+            {/* Presale -> donut (top-left)
+                Path is correct, but circle color should match line color (#06353d) */}
+            <path d="M160,95 L400,95 L400,170" stroke="#06353d" strokeWidth="2" fill="none" />
+            <circle cx="400" cy="170" r="6" fill="#06353d" />
 
-            {/* Burned -> donut (bottom) */}
-            <line x1="270" y1="370" x2="430" y2="320" stroke="#1e3a8a" strokeWidth="2" />
-            <circle cx="430" cy="320" r="6" fill="#1e3a8a" />
+            {/* Burned -> donut (bottom-left)
+                Corrected circle color from "#1e3a8a" to "#7e8cb2" */}
+            <path d="M168,370 L430,370 L430,340" stroke="#7e8cb2" strokeWidth="2" fill="none" />
+            <circle cx="430" cy="340" r="6" fill="#7e8cb2" />
 
-            {/* Liquidity -> donut (top) */}
-            <line x1="730" y1="55" x2="530" y2="100" stroke="#c7c7cc" strokeWidth="2" />
-            <circle cx="530" cy="100" r="6" fill="#c7c7cc" />
+            {/* Liquidity -> donut (top-right)
+                Path and circle color are correct (#c7c7cc) */}
+            <path d="M800,55 L530,55 L530,120" stroke="#783981" strokeWidth="2" fill="none" />
+            <circle cx="530" cy="120" r="6" fill="#783981" />
 
-            {/* Cex -> donut (right side) */}
-            <line x1="730" y1="220" x2="615" y2="215" stroke="#6366f1" strokeWidth="2" />
-            <circle cx="615" cy="215" r="6" fill="#6366f1" />
+            {/* Cex -> donut (bottom-right)
+                Path and circle color are correct (#6366f1) */}
+            <path d="M870,220 L615,220 L615,185" stroke="#2c30f6" strokeWidth="2" fill="none" />
+            <circle cx="615" cy="185" r="6" fill="#2c30f6" />
           </svg>
 
           {/* ===== CENTER DONUT CHART ===== */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[230px] sm:w-[270px] md:w-[300px] aspect-square">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[230px] sm:w-[270px] md:w-[300px] aspect-square rounded-full border-4 border-white">
 
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
               {/* Liquidity 5% - light gray */}
               <circle
-                cx="50" cy="50" r="40" fill="transparent"
-                stroke="#c7c7cc" strokeWidth="12"
+                cx="50" cy="50" r="43" fill="transparent"
+                stroke="#c7c7cc" strokeWidth="14"
                 strokeDasharray="5 95" pathLength="100" strokeDashoffset="0"
               />
               {/* Cex 15% - indigo */}
               <circle
-                cx="50" cy="50" r="40" fill="transparent"
-                stroke="#6366f1" strokeWidth="12"
+                cx="50" cy="50" r="43" fill="transparent"
+                stroke="#6366f1" strokeWidth="14"
                 strokeDasharray="15 85" pathLength="100" strokeDashoffset="-5"
               />
               {/* Burned 50% - dark navy */}
               <circle
-                cx="50" cy="50" r="40" fill="transparent"
-                stroke="#1e3a8a" strokeWidth="12"
+                cx="50" cy="50" r="43" fill="transparent"
+                stroke="#1e3a8a" strokeWidth="14"
                 strokeDasharray="50 50" pathLength="100" strokeDashoffset="-20"
               />
               {/* Presale 30% - cyan */}
               <circle
-                cx="50" cy="50" r="40" fill="transparent"
-                stroke="#06b6d4" strokeWidth="12"
+                cx="50" cy="50" r="43" fill="transparent"
+                stroke="#06b6d4" strokeWidth="14"
                 strokeDasharray="30 70" pathLength="100" strokeDashoffset="-70"
               />
             </svg>
 
             {/* White center disc + pumpkin */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-[62%] h-[62%] rounded-full bg-white flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+              <div className="w-[72%] h-[72%] rounded-full bg-white border-4 border-[#1e3a8a] flex items-center justify-center">
                 <img
                   src={centerPumpkinImg}
                   alt="Center Hub Pumpkin"
@@ -94,36 +98,68 @@ export default function Tokenomics() {
               DATA CALLOUT LABELS ( r_ghost + Text )
               ========================================================================= */}
 
-          {/* Top Left Callout: PRESALE (30%) */}
+          {/* Top Left Callout: PRESALE (30%)
+              Corrected circle color from "#1e3a8a" to "#06b6d4" to match segment */}
           <div className="absolute left-[2%] top-[8%] flex items-center gap-2">
             <div className="text-left whitespace-nowrap">
               <p className="font-serif italic font-bold text-white text-sm sm:text-base leading-tight">Presale</p>
               <p className="font-sans font-black text-cyan-400 text-base sm:text-lg leading-tight">30%</p>
             </div>
-            <img src={rGhostImg} alt="Presale Ghost" className="w-12 sm:w-16 h-auto animate-float-slow" />
+            {/* Added circle matching segment color */}
+            <div className="w-30 h-30 flex items-center justify-center -ml-1">
+  <img
+    src={rGhostImg}
+    alt="Presale Ghost"
+    className="w-full h-auto transform -scale-x-100 animate-float-slow"
+  />
+</div>
           </div>
 
-          {/* Bottom Left Callout: BURNED (50%) */}
+          {/* Bottom Left Callout: BURNED (50%)
+              Corrected circle color from "#1e3a8a" to "#1e3a8a" to match segment */}
           <div className="absolute left-[3%] bottom-[10%] flex items-center gap-2">
             <div className="text-left whitespace-nowrap">
               <p className="font-serif italic font-bold text-white text-sm sm:text-base leading-tight">Burned</p>
               <p className="font-sans font-black text-blue-900 text-base sm:text-lg leading-tight">50%</p>
             </div>
-            <img src={rGhostImg} alt="Burned Ghost" className="w-12 sm:w-16 h-auto transform -scale-x-100 animate-float-mini" />
+            {/* Added circle matching segment color */}
+            <div className="w-30 h-30 flex items-center justify-center -ml-1">
+  <img
+    src={rGhostImg}
+    alt="Presale Ghost"
+    className="w-full h-auto transform -scale-x-100 animate-float-slow"
+  />
+</div>
           </div>
 
-          {/* Top Right Callout: LIQUIDITY (5%) */}
+          {/* Top Right Callout: LIQUIDITY (5%)
+              Corrected circle color from "#1e3a8a" to "#c7c7cc" to match segment */}
           <div className="absolute right-[4%] top-[2%] flex items-center gap-2">
-            <img src={rGhostImg} alt="Liquidity Ghost" className="w-12 sm:w-16 h-auto transform -scale-x-100 animate-float-slow" />
+            {/* Added circle matching segment color */}
+            <div className="w-30 h-30 flex items-center justify-center -ml-1">
+  <img
+    src={rGhostImg}
+    alt="Presale Ghost"
+    className="w-full h-auto animate-float-slow"
+  />
+</div>
             <div className="text-left whitespace-nowrap">
               <p className="font-serif italic font-bold text-white text-sm sm:text-base leading-tight">Liquidity</p>
               <p className="font-sans font-black text-zinc-400 text-base sm:text-lg leading-tight">5%</p>
             </div>
           </div>
 
-          {/* Mid Right Callout: CEX (15%) */}
-          <div className="absolute right-[1%] top-[40%] flex items-center gap-2">
-            <img src={rGhostImg} alt="Cex Ghost" className="w-12 sm:w-16 h-auto animate-float-mini" />
+          {/* Mid Right Callout: CEX (15%)
+              Corrected circle color from "#1e3a8a" to "#6366f1" to match segment */}
+          <div className="absolute right-[1%] top-[35%] flex items-center gap-2">
+            {/* Added circle matching segment color */}
+            <div className="w-30 h-30 flex items-center justify-center -ml-1">
+  <img
+    src={rGhostImg}
+    alt="Presale Ghost"
+    className="w-full h-auto animate-float-slow"
+  />
+</div>
             <div className="text-left whitespace-nowrap">
               <p className="font-serif italic font-bold text-white text-sm sm:text-base leading-tight">Cex</p>
               <p className="font-sans font-black text-indigo-400 text-base sm:text-lg leading-tight">15%</p>
