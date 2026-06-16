@@ -2,7 +2,7 @@ import React from "react";
 
 // Asset Imports matching your project paths exactly
 import rGhostImg from "../assets/ghosts/r_ghost.png";
-import bigGhostImg from "../assets/ghosts/ghost.png";
+import bigGhostImg from "../assets/ghosts/g7.png";
 import centerPumpkinImg from "../assets/s_pum.png";
 import footerPlankImg from "../assets/end.png";
 import icon9Img from "../assets/icons/icon9.png";
@@ -174,7 +174,7 @@ export default function Tokenomics() {
           ========================================================================= */}
       <footer className="relative w-full bg-black pb-12 pt-4 px-4 flex flex-col items-center">
 
-        <div className="relative w-full max-w-4xl aspect-[1100/320] flex items-center justify-center">
+        <div className="relative w-full max-w-10xl aspect-[1100/320] flex items-center justify-center">
 
           {/* Base Layer Wooden Asset Frame */}
           <img
@@ -194,13 +194,27 @@ export default function Tokenomics() {
 
           {/* Right Corner: Large Story Ghost and Resting Pumpkins Group */}
           <div className="absolute right-[1%] bottom-[0%] w-[24%] h-[95%] z-20 flex items-end justify-start pointer-events-none">
-            <div className="absolute right-[5%] top-[-8%] w-[70%] animate-float-slow filter drop-shadow-[0_10px_15px_rgba(255,255,255,0.05)]">
-              <img src={bigGhostImg} alt="Master Ghost" className="w-full h-auto object-contain" />
+            <div className="absolute right-[20%] top-[-0%] w-[75%] animate-float-slow filter drop-shadow-[0_10px_15px_rgba(255,255,255,0.05)]">
+              <img src={bigGhostImg} alt="Master Ghost" className="w-full h-auto transform -scale-x-100 object-contain" />
             </div>
-            <div className="absolute right-[8%] bottom-[6%] w-[55%] flex items-end gap-1">
-              <img src={centerPumpkinImg} alt="Environment Pumpkin" className="w-[60%] h-auto transform rotate-6" />
-              <img src={centerPumpkinImg} alt="Environment Pumpkin" className="w-[45%] h-auto -ml-2" />
-            </div>
+            {/* Overlapping Pumpkins Inside Wood */}
+<div className="absolute right-[60%] bottom-[2%] w-[68%] h-[65%] z-30">
+
+  {/* Big Pumpkin */}
+  <img
+    src={centerPumpkinImg}
+    alt="Big Pumpkin"
+    className="absolute left-0 bottom-0 w-[65%] h-auto z-10 rotate-6"
+  />
+
+  {/* Small Pumpkin Overlapping */}
+  <img
+    src={centerPumpkinImg}
+    alt="Small Pumpkin"
+    className="absolute right-[8%] bottom-0 w-[45%] h-auto z-20"
+  />
+
+</div>
           </div>
 
           {/* =========================================================================
